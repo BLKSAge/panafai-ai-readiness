@@ -1,104 +1,63 @@
-Panafai: Mapping the Next Billion
-
-## Panafai is a research initiative focused on assessing AI readiness across all 54 African countries.
-The project measures socio-economic, infrastructural, and technological indicators to identify opportunities for localized, decentralized AI assistants tailored to underserved regions.
+# Panafai: AI Readiness Index
 
 ## Project Purpose
-
-The global AI conversation often overlooks underserved regions, where infrastructure, language access, and affordability shape adoption.
-This project seeks to close that gap by:
-
-Building a composite AI Readiness Index for African nations.
-
-Identifying regional strengths and weaknesses in AI adoption potential.
-
-Highlighting sector-specific opportunities (healthcare, education, agriculture, finance).
-
-Providing a data-driven roadmap for localized, privacy-first AI deployment.
+This project develops an **AI Readiness Index** to evaluate how countries — with a focus on Africa — are positioned to adopt and integrate artificial intelligence. By combining socioeconomic, infrastructure, and governance indicators, the index reveals leaders, late risers, and stagnant/volatile trajectories.
 
 ## Indicators
-
-The index incorporates the following factors:
-
-Human Development Index (HDI)
-
-GDP per capita
-
-Internet penetration
-
-Education access and literacy rates
-
-Healthcare and infrastructure proxies
+- Electricity Access  
+- GDP (PPP)  
+- Government Effectiveness  
+- Internet Access  
+- Literacy Rate  
+- Mobile Subscriptions  
+- Researchers per capita  
+- R&D as % of GDP  
+- Tertiary Enrollment  
 
 ## Methodology
+1. **Data Collection** – World Bank, UNESCO, and UN datasets.  
+2. **Data Cleaning** – Standardize formats, remove duplicates, handle missing values.  
+3. **Normalization** – MinMax scaling (0–100) for cross-country comparability.  
+4. **Composite Index** – Equal-weight and weighted scoring.  
+5. **Clustering** – KMeans and trajectory-shape clustering to identify patterns.  
+6. **Visualization** – Time series, heatmaps, PCA/t-SNE, and cluster profiles.  
 
-Data Collection & Integration: Assemble datasets covering all 54 countries.
+## Modeling
+- **KMeans clustering** – grouped countries by readiness features.  
+- **Trajectory-shape clustering** – revealed temporal development patterns.  
+- **PCA/t-SNE** – reduced dimensionality and improved visualization.  
 
-Exploratory Data Analysis (EDA): Assess completeness, normalize metrics, and examine distributions.
+## Setup
+For environment setup and dependencies, see [Setup Guide](docs/setup.md).
 
-Feature Engineering: Standardize and weight indicators into a harmonized schema.
-
-Composite Index Construction: Create and test weighting strategies (equal weight, PCA, expert-informed).
-
-## Modeling:
-
-Clustering -> segment readiness tiers (low, medium, high).
-
-Regression -> identify drivers of readiness and predict trajectories.
-
-Visualization: Develop maps and dashboards illustrating readiness scores, disparities, and sector opportunities.
+## Project Workflow
+1. [01_DataLoad_Clean](notebooks/01_DataLoad_Clean_COMPLETE.ipynb) – Load and clean datasets  
+2. [02_Snapshot_EDA](notebooks/02_Snapshot_EDA.ipynb) – Exploratory Data Analysis  
+3. [03_Normalize_Scale](notebooks/03_Normalize_Scale.ipynb) – Normalization and scaling  
+4. [04_Scoring_Composite](notebooks/04_Scoring_Composite.ipynb) – Composite scoring  
+5. [05_Visualization_Analysis](notebooks/05_Visualization_Analysis.ipynb) – Visualizations and insights  
+6. [06_Clustering_Trajectories](notebooks/06_Clustering_Trajectories.ipynb) – Clustering countries  
+7. [07_Trajectory_Shape_Clustering](notebooks/07_Trajectory_Shape_Clustering.ipynb) – Trajectory pattern analysis  
 
 ## Deliverables
+- Jupyter notebooks (01–07) showing the full workflow  
+- Composite scoring outputs (equal-weight and weighted).  
+- Visualizations of country readiness trajectories  
+- Cluster analysis identifying leaders, late risers, and stagnant groups  
+- Extended results documented in: [Project Summary](docs/summary.md)
 
-Master Dataset: Cleaned and integrated country-level indicators.
+## File Structure
+├── data/              # Raw, cleaned, and normalized datasets
+├── notebooks/         # Jupyter notebooks (01–07 workflow)
+├── scripts/           # Python helper files (e.g., normalize.py)
+├── figures/           # Saved charts and plots
+├── docs/              # Extended results and project summary
+│   └── summary.md
+└── README.md          # Project overview
 
-Composite AI Readiness Index: Ranking of African nations by readiness tier.
-
-Analysis Report: Findings, interpretations, and recommendations.
-
-Visualization Suite: Geographic readiness map and dashboards.
-
-Executive Presentation: Summary of insights for stakeholders and decision-makers.
-
----
-## Setup & Dependencies
----
-
-This project requires the following Python libraries:
-
-# Core data analysis
-import pandas as pd
-import numpy as np
-
-# Visualization
-import matplotlib.pyplot as plt
-import seaborn as sns
-import plotly.express as px
-import geopandas as gpd
-
-# Modeling & statistics
-from sklearn.preprocessing import StandardScaler
-from sklearn.decomposition import PCA
-from sklearn.cluster import KMeans
-from sklearn.linear_model import LinearRegression
-import statsmodels.api as sm
-
-# Utilities
-import os
-import warnings
-warnings.filterwarnings("ignore")
-
-# Plot settings
-plt.style.use("seaborn-v0_8")
-sns.set_theme(context="notebook", style="whitegrid", palette="deep")
-
-Optional
-
-missingno – visualize missing values
-
-folium – build interactive leaflet-style maps
-
-To install all dependencies:
-
-pip install -r requirements.txt
-## 📁 Structure
+## References & Resources
+- World Bank Data Catalog – https://data.worldbank.org  
+- UNESCO Institute for Statistics – http://uis.unesco.org  
+- UN Data – https://data.un.org  
+- scikit-learn documentation – https://scikit-learn.org/stable/  
+- General Assembly Capstone Guidelines  
