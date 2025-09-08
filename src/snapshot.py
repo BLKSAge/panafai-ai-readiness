@@ -27,6 +27,6 @@ if __name__ == "__main__":
                 snapshot = extract_latest(df, indicator)
                 out_path = os.path.join(snapshot_dir, f"{indicator}_snapshot.csv")
                 snapshot.to_csv(out_path, index=False)
-                print(f"✔ Saved {out_path} ({len(snapshot)} rows)")
+                print(f"Saved {out_path} ({len(snapshot)} rows)")
             except Exception as e:
-                print(f"✘ Failed on {indicator}: {e}")
+                print(f"Failed on {indicator}: {e}")

@@ -54,6 +54,6 @@ if __name__ == "__main__":
             
             out_path = os.path.join(clean_dir, f"{indicator}_clean.csv")
             cleaned.to_csv(out_path, index=False)
-            print(f"✔ Saved {out_path} ({len(cleaned)} rows)")
+            print(f"Saved {out_path} ({len(cleaned)} rows)")
         except Exception as e:
-            print(f"✘ Failed on {indicator}: {e}")
+            print(f"Failed on {indicator}: {e}")

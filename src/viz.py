@@ -19,7 +19,7 @@ def plot_distribution(df, column, title, fname):
     out_path = os.path.join(img_dir, fname)
     plt.savefig(out_path)
     plt.close()
-    print(f"✔ Saved {out_path}")
+    print(f"Saved {out_path}")
 
 if __name__ == "__main__":
     try:
@@ -34,4 +34,4 @@ if __name__ == "__main__":
                           "Distribution of Equal AI Readiness Scores",
                           "equal_scores_dist.png")
     except Exception as e:
-        print(f"✘ Visualization failed: {e}")
+        print(f"Visualization failed: {e}")

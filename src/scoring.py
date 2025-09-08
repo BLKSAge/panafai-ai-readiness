@@ -46,17 +46,17 @@ if __name__ == "__main__":
             norm_dfs.append(df)
 
     if not norm_dfs:
-        print("✘ No normalized files found")
+        print("No normalized files found")
     else:
         try:
             # Equal-weight scores
             equal_scores = compute_scores(norm_dfs, weights=None)
             equal_scores.to_csv(os.path.join(score_dir, "equal_scores.csv"), index=False)
-            print("✔ Saved equal_scores.csv")
+            print("Saved equal_scores.csv")
 
             # Weighted scores
             weighted_scores = compute_scores(norm_dfs, weights=weights)
             weighted_scores.to_csv(os.path.join(score_dir, "weighted_scores.csv"), index=False)
-            print("✔ Saved weighted_scores.csv")
+            print("Saved weighted_scores.csv")
         except Exception as e:
-            print(f"✘ Failed scoring: {e}")
+            print(f"Failed scoring: {e}")
